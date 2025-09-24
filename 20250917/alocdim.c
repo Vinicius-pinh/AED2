@@ -6,6 +6,9 @@
 #define MAX_NOME 50
 #define NUM_NOTAS 3
 char read='r', write='w';
+
+
+
 typedef struct
 {
     char nome [MAX_NOME];
@@ -13,7 +16,18 @@ typedef struct
     float media;
 } aluno;
 
-void testfile (char *filename, char fopenmode);
+void bubble_sort (aluno **p, int qtdalunos)
+{
+    float media, mediaaux, notas, notasaux;
+    char nome, nomeaux;
+    aluno *a=*p;
+    for (qtdalunos; qtdalunos  ; qtdalunos++){
+
+
+    }
+
+
+}
 
 int main()
 {
@@ -21,14 +35,14 @@ int main()
     char linha[MAX_LINHA];
     int j, quantidadeAlunos = 0;
 
-    arquivo = fopen("fnotas.csv","r");
-    testfile("arquivo","mode");
-   /* if (arquivo == NULL)
+    arquivo = fopen("notas.csv","r");
+
+    if (arquivo == NULL)
     {
         printf("Erro ao abrir o arquivo. \n");
         return 1;
     }
-    */
+
     while (fgets(linha, MAX_LINHA, arquivo) != NULL)
     {
         quantidadeAlunos++;
@@ -76,7 +90,10 @@ int main()
 
     }
 
+
     fclose(arquivo);
+
+    bubble_sort(&alunos, quantidadeAlunos);
 
     printf("\n ===== Relatorio de Notas ====\n");
     int k;
@@ -95,10 +112,6 @@ int main()
     free(alunos);
 }
 
-void testfile (char *filename, char *fopenmode){
-   if (filename == NULL)
-    {
-        printf("Erro ao abrir o arquivo. \n");
-        return 5;
-    }
-}
+
+
+
