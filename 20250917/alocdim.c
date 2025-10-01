@@ -16,17 +16,21 @@ typedef struct
     float media;
 } aluno;
 
-void bubble_sort (aluno **p, int qtdalunos)
+void bubble_sort (aluno *alunos, int qtdalunos)
 {
-    float media, mediaaux, notas, notasaux;
-    char nome, nomeaux;
-    aluno *a=*p;
-    for (qtdalunos; qtdalunos  ; qtdalunos++){
-
-
+    int i, j;
+    for (i = 0; i < qtdalunos - 1; i++)
+    {
+        for (j = 0; j < qtdalunos - i - 1; j++)
+        {
+            if (alunos[j].media < alunos[j + 1].media)
+            {
+                aluno temp = alunos[j];
+                alunos[j] = alunos[j + 1];
+                alunos[j + 1] = temp;
+            }
+        }
     }
-
-
 }
 
 int main()
@@ -92,8 +96,9 @@ int main()
 
 
     fclose(arquivo);
+    bubble_sort(alunos, quantidadeAlunos);
 
-    bubble_sort(&alunos, quantidadeAlunos);
+
 
     printf("\n ===== Relatorio de Notas ====\n");
     int k;
