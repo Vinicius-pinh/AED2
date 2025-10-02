@@ -16,6 +16,50 @@ typedef struct
     float media;
 } aluno;
 
+void q_sort(aluno *alunos, int left, int right)
+{
+    int i, j, x, y;
+    i = left;
+    j = right;
+    *x = alunos[(left + right) / 2];
+    while(i <= j)
+    {
+        printf("\n[%d-%d] ", left, right);
+        while(alunos[i] < x && i < right)
+        {
+            printf("%d, ", i);
+            i++;
+        }
+        while(alunos[j] > x && j > left)
+        {
+            printf("%d, ", j);
+            j--;
+        }
+        if(i <= j)
+        {
+            printf("*");
+            y = alunos[i];
+            alunos[i] = alunos[j];
+            alunos[j] = y;
+            i++;
+            j--;
+        }
+    }
+    if(j > left)
+    {
+        q_sort(vetor, left, j);
+    }
+    if(i < right)
+    {
+        q_sort(vetor, i, right);
+    }
+}
+void quick_sort(int vetor[], int n)
+{
+    q_sort(vetor, 0, n-1);
+}
+}
+
 void bubble_sort (aluno *alunos, int qtdalunos)
 {
     int i, j;
